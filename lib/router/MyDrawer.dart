@@ -62,15 +62,12 @@ class MyDrawer extends StatelessWidget {
         builder: (BuildContext context, UserModel value, Widget? child) {
       return ListView(
         children: [
-          Container(
-            color: Colors.red,
-            child: ListTileMoreCustomizable(
-              minVerticalPadding: 10.0,
-              leading: const Icon(Icons.color_lens),
-              title: Text(
-                S.of(context).title_lens,
-                style: const TextStyle(color: Colors.grey),
-              ),
+          ListTileMoreCustomizable(
+            minVerticalPadding: 10.0,
+            leading: const Icon(Icons.color_lens),
+            title: Text(
+              S.of(context).title_lens,
+              style: const TextStyle(color: Colors.grey),
             ),
           ),
           Container(
