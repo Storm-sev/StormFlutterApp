@@ -4,7 +4,7 @@ import 'package:dio/dio.dart';
 
 import 'AppNet.dart';
 import 'Exception.dart';
-import 'Http.dart';
+import 'HttpConfig.dart';
 import 'HttpResponse.dart';
 import 'TransFormer.dart';
 
@@ -16,13 +16,9 @@ class HttpClient {
 
   AppNet get dio => _dio;
 
-
-
   void headers(Map<String, dynamic> headers) {
-    // _dio.headers(headers);
-
-    dio.options.headers.addAll(headers);
-
+    _dio.headers(headers);
+    // dio.options.headers.addAll(headers);
   }
 
   Future<HttpResponse> get(String url,
@@ -166,7 +162,6 @@ class HttpClient {
           UnauthorisedException(message: "token失效"));
     }
     // 接口调用成功
-
     if (_isRequestSuccess(response.statusCode)) {
       return httpTransFormer.parse(response);
     } else {

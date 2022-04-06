@@ -1,11 +1,10 @@
-
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:stormflutterapp/models/index.dart';
 import 'package:stormflutterapp/net/Net.dart';
+import 'package:stormflutterapp/nethttp/HttpResponse.dart';
 import 'package:stormflutterapp/provider/Notifier.dart';
 
 import '../generated/l10n.dart';
@@ -94,7 +93,7 @@ class _HomeRouterState extends State<HomeRouter> {
   // 请求数据
 
   void _retrieveData() async {
-    var r = await Net(context).getRepos(
+    HttpResponse r = await Net(context).getRepos(
       queryParameters: {
         'page': page,
         'page_size': 20,
@@ -102,15 +101,18 @@ class _HomeRouterState extends State<HomeRouter> {
     );
 
     if (r.ok) {
-      var datas = (r.data as Response).data.map((e) => Repo.fromJson(e)).toList();
-      hasMore = datas.length > 0 && datas.length % 20 == 0;
+      // List<Repo>? datas =
+      List<Repo> datas =
+          (r.data as Iterable).map((e) => Repo.fromJson(e)).toList();
+      // Response<List> response = r.data as Response<List>;
+      // List<Repo> datas = response!.data!.map((e) => Repo.fromJson(e)).toList();
+      hasMore = datas.isNotEmpty && datas.length % 20 == 0;
+
       setState(() {
         _items.insertAll(_items.length - 1, datas);
         page++;
       });
-    }else{
-
-    }
+    } else {}
 
     // //如果返回的数据小于指定的条数，则表示没有更多数据，反之则否
     // hasMore = data.length > 0 && data.length % 20 == 0;

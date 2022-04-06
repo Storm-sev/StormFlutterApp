@@ -10,7 +10,7 @@ import 'package:stormflutterapp/nethttp/HttpResponse.dart';
 
 import '../common/Global.dart';
 import '../models/user.dart';
-import '../nethttp/Http.dart';
+import '../nethttp/HttpConfig.dart';
 
 class Net {
   late Options _options;
@@ -43,6 +43,7 @@ class Net {
                 "application/vnd.github.squirrel-girl-preview,"
                     "application/vnd.github.symmetra-preview+json",
           },
+          contentType: "application/json",
           connectTimeout: 3000,
           sendTimeout: 3000,
           receiveTimeout: 3000));
@@ -92,8 +93,9 @@ class Net {
     _options.extra?["noCache"] = true;
 
     HttpResponse r = await httpClient.get("/user", options: _options);
-    // httpClient.dio.options.headers[HttpHeaders.authorizationHeader] = basic;
     Global.profile.token = basic;
+    httpClient.dio.options.headers[HttpHeaders.authorizationHeader] = Global.profile.token;
+
     return r;
   }
 

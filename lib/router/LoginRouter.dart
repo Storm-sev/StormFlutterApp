@@ -26,6 +26,7 @@ class _LoginRouterState extends State<LoginRouter> {
   @override
   void initState() {
     _unameController.text = "zq329051@outlook.com";
+    _pwdController.text = "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";
     super.initState();
   }
 
@@ -101,19 +102,19 @@ class _LoginRouterState extends State<LoginRouter> {
       showLoading();
       User? user;
 
-
       var r =
           await Net(context).login(_unameController.text, _pwdController.text);
 
       if (r.ok) {
-        user = User.fromJson((r.data as Response).data);
+        user = User.fromJson(r.data);
+
         Provider.of<UserModel>(context, listen: false).user = user;
       } else {
         // 没有获取到
         print("登录失败");
         if (r.error is UnauthorisedException) {
           ScaffoldMessenger.of(context)
-              .showSnackBar(SnackBar(content: Text("用户名或密码错误")));
+              .showSnackBar(const SnackBar(content: Text("用户名或密码错误")));
         } else {
           ScaffoldMessenger.of(context)
               .showSnackBar(SnackBar(content: Text(r.error?.message ?? "")));

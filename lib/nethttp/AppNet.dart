@@ -6,13 +6,14 @@ import 'package:dio/dio.dart';
 import 'package:dio_cache_interceptor/dio_cache_interceptor.dart';
 import 'package:flutter/foundation.dart';
 
-import 'package:stormflutterapp/nethttp/Http.dart';
+import 'package:stormflutterapp/nethttp/HttpConfig.dart';
 
 class AppNet extends DioMixin implements Dio {
   AppNet({BaseOptions? options, HttpConfig? config}) {
     // 构建 baseOptions
     options ??= BaseOptions(
       baseUrl: config?.baseUrl ?? "",
+      contentType: "application/json",
       connectTimeout: config?.connectTimeout,
       sendTimeout: config?.sendTimeout,
       receiveTimeout: config?.receiveTimeout,
