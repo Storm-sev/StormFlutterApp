@@ -28,9 +28,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("please input your username"),
         "language": MessageLookupByLibrary.simpleMessage("English"),
         "login": MessageLookupByLibrary.simpleMessage("login"),
+        "login_off": MessageLookupByLibrary.simpleMessage("login_off"),
         "no_describe": MessageLookupByLibrary.simpleMessage("no describe"),
         "pwd": MessageLookupByLibrary.simpleMessage("password"),
         "title": MessageLookupByLibrary.simpleMessage("homepage"),
+        "title_language": MessageLookupByLibrary.simpleMessage("language"),
+        "title_lens": MessageLookupByLibrary.simpleMessage("change lens"),
         "username": MessageLookupByLibrary.simpleMessage("user name")
       };
 }

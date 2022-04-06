@@ -27,4 +27,9 @@ class User {
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
 
   Map<String, dynamic> toJson() => _$UserToJson(this);
+
+  @override
+  String toString() {
+    return 'User{login: $login, avatar_url: $avatar_url, type: $type, name: $name, company: $company, blog: $blog, location: $location, email: $email, hireable: $hireable, bio: $bio, public_repos: $public_repos, followers: $followers, following: $following, created_at: $created_at, updated_at: $updated_at, total_private_repos: $total_private_repos, owned_private_repos: $owned_private_repos}';
+  }
 }

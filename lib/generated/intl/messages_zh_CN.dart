@@ -26,9 +26,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "hint_username": MessageLookupByLibrary.simpleMessage("输入账号"),
         "language": MessageLookupByLibrary.simpleMessage("中文简体"),
         "login": MessageLookupByLibrary.simpleMessage("登录"),
+        "login_off": MessageLookupByLibrary.simpleMessage("注销"),
         "no_describe": MessageLookupByLibrary.simpleMessage("暂无简介"),
         "pwd": MessageLookupByLibrary.simpleMessage("密码"),
         "title": MessageLookupByLibrary.simpleMessage("首页"),
+        "title_language": MessageLookupByLibrary.simpleMessage("语言"),
+        "title_lens": MessageLookupByLibrary.simpleMessage("换肤"),
         "username": MessageLookupByLibrary.simpleMessage("账号")
       };
 }

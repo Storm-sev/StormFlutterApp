@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:list_tile_more_customizable/list_tile_more_customizable.dart';
 import 'package:provider/provider.dart';
 import 'package:stormflutterapp/provider/Notifier.dart';
 import 'package:stormflutterapp/router/HomeRouter.dart';
+
+import '../generated/l10n.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({Key? key}) : super(key: key);
@@ -13,9 +16,7 @@ class MyDrawer extends StatelessWidget {
           context: context,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _buildHeaders(),
-            ],
+            children: [_buildHeaders(), Expanded(child: _buildMenus())],
           )),
     );
   }
@@ -23,6 +24,7 @@ class MyDrawer extends StatelessWidget {
   Widget _buildHeaders() {
     return Consumer<UserModel>(
         builder: (BuildContext context, UserModel value, Widget? child) {
+      print("用户信息 --> " + value.user.toString());
       return GestureDetector(
         child: Container(
           color: Colors.blue,
@@ -40,11 +42,49 @@ class MyDrawer extends StatelessWidget {
                               width: 80,
                             )),
                 ),
+                Text(
+                  value.isLogin
+                      ? (value.user!.name ?? "无名")
+                      : S.of(context).login,
+                  style: const TextStyle(color: Colors.white),
+                )
               ],
             ),
           ),
         ),
         onTap: () {},
+      );
+    });
+  }
+
+  Widget _buildMenus() {
+    return Consumer(
+        builder: (BuildContext context, UserModel value, Widget? child) {
+      return ListView(
+        children: [
+          Container(
+            color: Colors.red,
+            child: ListTileMoreCustomizable(
+              minVerticalPadding: 10.0,
+              leading: const Icon(Icons.color_lens),
+              title: Text(
+                S.of(context).title_lens,
+                style: const TextStyle(color: Colors.grey),
+              ),
+            ),
+          ),
+          Container(
+            color: Colors.red,
+            child: ListTileMoreCustomizable(
+              minVerticalPadding: 0.0,
+              leading: const Icon(Icons.color_lens),
+              title: Text(
+                S.of(context).title_lens,
+                style: const TextStyle(color: Colors.grey),
+              ),
+            ),
+          )
+        ],
       );
     });
   }

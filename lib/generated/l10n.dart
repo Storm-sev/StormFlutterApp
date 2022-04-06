@@ -129,6 +129,36 @@ class S {
       args: [],
     );
   }
+
+  /// `change lens`
+  String get title_lens {
+    return Intl.message(
+      'change lens',
+      name: 'title_lens',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `language`
+  String get title_language {
+    return Intl.message(
+      'language',
+      name: 'title_language',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `login_off`
+  String get login_off {
+    return Intl.message(
+      'login_off',
+      name: 'login_off',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

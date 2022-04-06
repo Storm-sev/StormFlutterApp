@@ -26,7 +26,7 @@ class _LoginRouterState extends State<LoginRouter> {
   @override
   void initState() {
     _unameController.text = "zq329051@outlook.com";
-    _pwdController.text = "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";
+    _pwdController.text = "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";
     super.initState();
   }
 

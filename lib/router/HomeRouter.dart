@@ -1,3 +1,5 @@
+
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -57,6 +59,7 @@ class _HomeRouterState extends State<HomeRouter> {
               // 如果是最后一个
               if (hasMore) {
                 _retrieveData();
+
                 // 如果能加载更多
                 return Container(
                   padding: const EdgeInsets.all(16.0),
@@ -93,7 +96,7 @@ class _HomeRouterState extends State<HomeRouter> {
   // 请求数据
 
   void _retrieveData() async {
-    HttpResponse r = await Net(context).getRepos(
+    var r = await Net(context).getRepos(
       queryParameters: {
         'page': page,
         'page_size': 20,

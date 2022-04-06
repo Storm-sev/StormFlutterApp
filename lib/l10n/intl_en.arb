@@ -6,5 +6,8 @@
   "pwd": "password",
   "hint_username": "please input your username",
   "hint_pwd": "please input your password",
-  "no_describe": "no describe"
+  "no_describe": "no describe",
+  "title_lens": "change lens",
+  "title_language": "language",
+  "login_off": "login_off"
 }

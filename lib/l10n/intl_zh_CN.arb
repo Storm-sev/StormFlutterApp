@@ -6,5 +6,8 @@
   "pwd": "密码",
   "hint_username": "输入账号",
   "hint_pwd": "请输入密码",
-  "no_describe": "暂无简介"
+  "no_describe": "暂无简介",
+  "title_lens": "换肤",
+  "title_language": "语言",
+  "login_off": "注销"
 }
