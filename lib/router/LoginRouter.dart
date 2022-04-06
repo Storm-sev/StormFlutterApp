@@ -26,7 +26,7 @@ class _LoginRouterState extends State<LoginRouter> {
   @override
   void initState() {
     _unameController.text = "zq329051@outlook.com";
-    _pwdController.text = "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";
+    _pwdController.text = "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";
     super.initState();
   }
 
@@ -37,7 +37,7 @@ class _LoginRouterState extends State<LoginRouter> {
         title: Text(S.of(context).login),
       ),
       body: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Form(
           key: fromKey,
           autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -80,9 +80,9 @@ class _LoginRouterState extends State<LoginRouter> {
                 },
               ),
               Padding(
-                padding: EdgeInsets.only(top: 25.0),
+                padding: const EdgeInsets.only(top: 25.0),
                 child: ConstrainedBox(
-                  constraints: BoxConstraints.expand(height: 55),
+                  constraints: const  BoxConstraints.expand(height: 55),
                   child: ElevatedButton(
                     onPressed: _onLogin,
                     child: Text(S.of(context).login),
@@ -101,13 +101,10 @@ class _LoginRouterState extends State<LoginRouter> {
     if ((fromKey.currentState as FormState).validate()) {
       showLoading();
       User? user;
-
       var r =
           await Net(context).login(_unameController.text, _pwdController.text);
-
       if (r.ok) {
         user = User.fromJson(r.data);
-
         Provider.of<UserModel>(context, listen: false).user = user;
       } else {
         // 没有获取到

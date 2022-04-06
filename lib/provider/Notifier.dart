@@ -16,17 +16,31 @@ class ProfileChangeNotifier extends ChangeNotifier {
 }
 
 class UserModel extends ProfileChangeNotifier {
-  User? get _user => _profile.user;
 
-  bool get isLogin => _user != null;
+  User? get user => _profile.user;
 
-  set user(User user) {
-    if (user.login != _profile.lastLogin) {
+  // APP是否登录(如果有用户信息，则证明登录过)
+  bool get isLogin => user != null;
+
+  //用户信息发生变化，更新用户信息并通知依赖它的子孙Widgets更新
+  set user(User? user) {
+    if (user?.login != _profile.user?.login) {
       _profile.lastLogin = _profile.user?.login;
       _profile.user = user;
       notifyListeners();
     }
   }
+  // User? get user => _profile.user;
+  //
+  // bool get isLogin => user != null;
+  //
+  // set user(User user) {
+  //   if (user?.login != _profile.lastLogin) {
+  //     _profile.lastLogin = _profile.user?.login;
+  //     _profile.user = user;
+  //     notifyListeners();
+  //   }
+  // }
 }
 
 class ThemeModel extends ProfileChangeNotifier {

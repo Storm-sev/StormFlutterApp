@@ -8,6 +8,7 @@ import 'package:stormflutterapp/nethttp/HttpResponse.dart';
 import 'package:stormflutterapp/provider/Notifier.dart';
 
 import '../generated/l10n.dart';
+import 'MyDrawer.dart';
 
 class HomeRouter extends StatefulWidget {
   const HomeRouter({Key? key}) : super(key: key);
@@ -22,7 +23,7 @@ class _HomeRouterState extends State<HomeRouter> {
   var _items = <Repo>[Repo()..name = loading];
   bool hasMore = true;
   int page = 1;
-  Widget line = Divider(color: Colors.black);
+  Widget line = const Divider(color: Colors.yellow);
 
   @override
   Widget build(BuildContext context) {
@@ -31,12 +32,12 @@ class _HomeRouterState extends State<HomeRouter> {
         title: Text(S.of(context).title),
       ),
       body: _buildHomeBody(),
+      drawer: MyDrawer(),
     );
   }
 
   Widget _buildHomeBody() {
     var userModel = Provider.of<UserModel>(context);
-
     if (!userModel.isLogin) {
       return Center(
         child: ElevatedButton(
@@ -56,7 +57,6 @@ class _HomeRouterState extends State<HomeRouter> {
               // 如果是最后一个
               if (hasMore) {
                 _retrieveData();
-
                 // 如果能加载更多
                 return Container(
                   padding: const EdgeInsets.all(16.0),
@@ -124,6 +124,9 @@ class _HomeRouterState extends State<HomeRouter> {
   }
 }
 
+/**
+ * 列表item
+ */
 class RepoItem extends StatefulWidget {
   const RepoItem(this.repo, {Key? key}) : super(key: key);
   final Repo repo;
@@ -137,7 +140,7 @@ class _RepoItemState extends State<RepoItem> {
   Widget build(BuildContext context) {
     var subTitle;
     return Padding(
-        padding: EdgeInsets.only(top: 8.0),
+        padding: const EdgeInsets.only(top: 8.0),
         child: Material(
           color: Colors.white,
           shape: BorderDirectional(
@@ -209,8 +212,7 @@ Widget gmAvatar(
   BoxFit? fit,
   BorderRadius? borderRadius,
 }) {
-  var placeholder = Image.network(
-      "https://avatars2.githubusercontent.com/u/20411648?s=460&v=4", //头像占位图
+  var placeholder = Image.asset("images/ic_header_default.png", //头像占位图
       width: width,
       height: height);
   return ClipRRect(
