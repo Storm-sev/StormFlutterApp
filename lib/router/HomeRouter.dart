@@ -1,5 +1,3 @@
-
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -48,10 +46,11 @@ class _HomeRouterState extends State<HomeRouter> {
             //     SnackBar(content: Text("去登录")));
             Navigator.of(context).pushNamed("login");
           },
-          child: const Text("登录"),
+          child: Text("登录" ,style: TextStyle(color: Colors.white),),
         ),
       );
     } else {
+
       // 登录 展示 列表
       return ListView.separated(
           itemBuilder: (context, pos) {

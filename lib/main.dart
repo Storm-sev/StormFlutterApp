@@ -6,6 +6,8 @@ import 'package:stormflutterapp/generated/l10n.dart';
 import 'package:stormflutterapp/provider/Notifier.dart';
 import 'package:stormflutterapp/router/HomeRouter.dart';
 import 'package:stormflutterapp/router/LoginRouter.dart';
+import 'package:stormflutterapp/router/Theme.dart';
+import 'package:stormflutterapp/router/language.dart';
 
 void main() => Global.init().then((e) => runApp(const MyApp()));
 
@@ -26,6 +28,17 @@ class MyApp extends StatelessWidget {
           return MaterialApp(
             theme: ThemeData(
               primarySwatch: themeModel.theme as MaterialColor,
+              textTheme: const  TextTheme(
+                labelLarge: TextStyle(
+                  color: Colors.yellow,
+                ),
+                labelMedium: TextStyle(
+                  color: Colors.yellow,
+                ),
+                labelSmall: TextStyle(
+                  // color: Colors.black,
+                ),
+              ),
             ),
             locale: localeModel.getLocale(),
             supportedLocales: S.delegate.supportedLocales,
@@ -39,14 +52,19 @@ class MyApp extends StatelessWidget {
                 return localeModel.getLocale();
               } else {
                 if (_locale == null) {
-                  return const Locale("en", "");
+                  var loc = Locale("en", "US");
+                  localeModel.locale = "en_US";
+                  return loc;
                 }
                 Locale locale;
                 if (supprotedLocales.contains(_locale)) {
                   locale = _locale;
                 } else {
-                  locale = const Locale("en", "");
+                  locale = const Locale("en", "US");
                 }
+
+                localeModel.locale =
+                    "${locale.languageCode}_${locale.countryCode}";
 
                 return locale;
               }
@@ -54,6 +72,8 @@ class MyApp extends StatelessWidget {
             home: HomeRouter(),
             routes: {
               "login": (context) => LoginRouter(),
+              "theme": (context) => ThemeChangeRoute(),
+              "language": (context) => LanguageChangeRouter(),
             },
           );
         },

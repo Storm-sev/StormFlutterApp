@@ -22,12 +22,15 @@ class MyDrawer extends StatelessWidget {
   }
 
   Widget _buildHeaders() {
+
+
     return Consumer<UserModel>(
         builder: (BuildContext context, UserModel value, Widget? child) {
       print("用户信息 --> " + value.user.toString());
+
       return GestureDetector(
         child: Container(
-          color: Colors.blue,
+          color: Theme.of(context).primaryColor,
           child: Padding(
             padding: const EdgeInsets.only(top: 40.0, bottom: 20),
             child: Row(
@@ -47,12 +50,16 @@ class MyDrawer extends StatelessWidget {
                       ? (value.user!.name ?? "无名")
                       : S.of(context).login,
                   style: const TextStyle(color: Colors.white),
+
+
                 )
               ],
             ),
           ),
         ),
-        onTap: () {},
+        onTap: () {
+          Navigator.of(context).pushNamed('login');
+        },
       );
     });
   }
@@ -63,22 +70,28 @@ class MyDrawer extends StatelessWidget {
       return ListView(
         children: [
           ListTileMoreCustomizable(
-            minVerticalPadding: 10.0,
+            dense: true,
             leading: const Icon(Icons.color_lens),
             title: Text(
               S.of(context).title_lens,
               style: const TextStyle(color: Colors.grey),
             ),
+            onTap: (v) {
+              // 跳转 换肤
+              Navigator.of(context).pushNamed("theme");
+            },
           ),
           Container(
             color: Colors.red,
             child: ListTileMoreCustomizable(
-              minVerticalPadding: 0.0,
-              leading: const Icon(Icons.color_lens),
+              leading: const Icon(Icons.language),
               title: Text(
-                S.of(context).title_lens,
+                S.of(context).title_language,
                 style: const TextStyle(color: Colors.grey),
               ),
+              onTap: (v) {
+                Navigator.of(context).pushNamed("language");
+              },
             ),
           )
         ],

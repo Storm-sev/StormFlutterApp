@@ -57,3 +57,6 @@ class Global {
   static saveProfile() =>
       {_sp.setString("profile", json.encode(profile.toJson()))};
 }
+
+
+

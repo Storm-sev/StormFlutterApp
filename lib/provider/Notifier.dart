@@ -16,7 +16,6 @@ class ProfileChangeNotifier extends ChangeNotifier {
 }
 
 class UserModel extends ProfileChangeNotifier {
-
   User? get user => _profile.user;
 
   // APP是否登录(如果有用户信息，则证明登录过)
@@ -30,17 +29,17 @@ class UserModel extends ProfileChangeNotifier {
       notifyListeners();
     }
   }
-  // User? get user => _profile.user;
-  //
-  // bool get isLogin => user != null;
-  //
-  // set user(User user) {
-  //   if (user?.login != _profile.lastLogin) {
-  //     _profile.lastLogin = _profile.user?.login;
-  //     _profile.user = user;
-  //     notifyListeners();
-  //   }
-  // }
+// User? get user => _profile.user;
+//
+// bool get isLogin => user != null;
+//
+// set user(User user) {
+//   if (user?.login != _profile.lastLogin) {
+//     _profile.lastLogin = _profile.user?.login;
+//     _profile.user = user;
+//     notifyListeners();
+//   }
+// }
 }
 
 class ThemeModel extends ProfileChangeNotifier {
@@ -52,9 +51,14 @@ class ThemeModel extends ProfileChangeNotifier {
     if (null == color) return;
     if (theme != color) {
       _profile.theme = color[500]!.value;
+      print("获取的主题颜色 ${_profile.theme}");
       notifyListeners();
     }
   }
+
+  MaterialColor titleColor() => Colors.blue;
+
+
 }
 
 class LocaleModel extends ProfileChangeNotifier {
