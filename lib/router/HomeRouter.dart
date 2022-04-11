@@ -38,6 +38,7 @@ class _HomeRouterState extends State<HomeRouter> {
 
   Widget _buildHomeBody() {
     var userModel = Provider.of<UserModel>(context);
+    var themeModel = Provider.of<ThemeModel>(context);
     if (!userModel.isLogin) {
       return Center(
         child: ElevatedButton(
@@ -46,7 +47,7 @@ class _HomeRouterState extends State<HomeRouter> {
             //     SnackBar(content: Text("去登录")));
             Navigator.of(context).pushNamed("login");
           },
-          child: Text("登录" ,style: TextStyle(color: Colors.white),),
+          child: Text("登录" ,style: TextStyle(color:themeModel.titleColor ),),
         ),
       );
     } else {

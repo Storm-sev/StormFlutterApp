@@ -56,7 +56,12 @@ class ThemeModel extends ProfileChangeNotifier {
     }
   }
 
-  MaterialColor titleColor() => Colors.blue;
+  int get curIndex {
+    int index = Global.themes.indexOf(theme as MaterialColor);
+    print("获取的index--> $index");
+    return index;
+  }
+
 
 
 }
