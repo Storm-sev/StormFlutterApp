@@ -24,8 +24,8 @@ class Global {
 
   // 主题相关
   static List<MaterialColor> get themes => _theme;
-  // 自定义主题相关.
 
+  // 自定义主题相关.
 
   static bool get isRelease => const bool.fromEnvironment("com.storm.product");
   static NetCache netCache = NetCache();
@@ -59,6 +59,3 @@ class Global {
   static saveProfile() =>
       {_sp.setString("profile", json.encode(profile.toJson()))};
 }
-
-
-
