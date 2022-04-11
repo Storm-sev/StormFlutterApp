@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 const custThemes = <Map<String,Color>>[
   normaTheme,
-  normaTheme,
+  darkTheme,
   normaTheme,
   darkTheme,
   darkTheme,

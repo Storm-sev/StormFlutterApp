@@ -1,5 +1,6 @@
 // models
 import 'package:flutter/material.dart';
+import 'package:stormflutterapp/common/ThemeColor.dart';
 import 'package:stormflutterapp/models/user.dart';
 
 import '../common/Global.dart';
@@ -62,7 +63,9 @@ class ThemeModel extends ProfileChangeNotifier {
     return index;
   }
 
-
+  Map<String,Color> get curTheme{
+    return custThemes[curIndex];
+  }
 
 }
 

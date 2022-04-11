@@ -47,11 +47,13 @@ class _HomeRouterState extends State<HomeRouter> {
             //     SnackBar(content: Text("去登录")));
             Navigator.of(context).pushNamed("login");
           },
-          child: Text("登录" ,style: TextStyle(color:themeModel.titleColor ),),
+          child: Text(
+            "登录",
+            style: TextStyle(color: themeModel.curTheme["buttonTextColor"]),
+          ),
         ),
       );
     } else {
-
       // 登录 展示 列表
       return ListView.separated(
           itemBuilder: (context, pos) {
