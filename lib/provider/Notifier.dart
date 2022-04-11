@@ -63,10 +63,9 @@ class ThemeModel extends ProfileChangeNotifier {
     return index;
   }
 
-  Map<String,Color> get curTheme{
+  CustomTheme get curTheme {
     return custThemes[curIndex];
   }
-
 }
 
 class LocaleModel extends ProfileChangeNotifier {

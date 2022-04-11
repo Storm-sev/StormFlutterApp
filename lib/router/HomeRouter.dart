@@ -42,18 +42,20 @@ class _HomeRouterState extends State<HomeRouter> {
     if (!userModel.isLogin) {
       return Center(
         child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            primary: themeModel.curTheme.buttonBgColor,
+          ),
           onPressed: () {
-            // ScaffoldMessenger.of(context).showSnackBar(
-            //     SnackBar(content: Text("去登录")));
             Navigator.of(context).pushNamed("login");
           },
           child: Text(
             "登录",
-            style: TextStyle(color: themeModel.curTheme["buttonTextColor"]),
+            style: TextStyle(color: themeModel.curTheme.buttonTextColor),
           ),
         ),
       );
     } else {
+
       // 登录 展示 列表
       return ListView.separated(
           itemBuilder: (context, pos) {

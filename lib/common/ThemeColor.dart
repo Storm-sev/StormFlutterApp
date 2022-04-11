@@ -1,34 +1,59 @@
-
 import 'package:flutter/material.dart';
 
-
-const custThemes = <Map<String,Color>>[
-  normaTheme,
+final List<CustomTheme> custThemes = <CustomTheme>[
+  lightTheme,
   darkTheme,
-  normaTheme,
-  darkTheme,
-  darkTheme,
+  tealTheme,
+  greenTheme,
+  redTheme,
 ];
 
-const normaTheme = <String, Color>{
-  "titleColor": Colors.black,
-  "buttonTextColor": Colors.black,
-};
-const darkTheme = <String, Color>{
-  "titleColor": Colors.black,
-  "buttonTextColor": Colors.white,
-};
+class CustomTheme {
+  Color? titleColor;
+  Color? buttonBgColor;
+  Color? buttonTextColor;
+  Color? listTitleColor;
 
-class LightTheme{
-  static Color get titleColor => Colors.black;
-  static Color get buttonBgColor => Colors.blue;
-  static Color get buttonTextColor => Colors.white;
-  static Color get listTitleColor => Colors.black87;
+  CustomTheme(
+      {this.titleColor,
+      this.buttonBgColor,
+      this.buttonTextColor,
+      this.listTitleColor});
 }
 
-class YellowTheme{
-  static Color get titleColor => Colors.white;
-  static Color get buttonBgColor => Colors.yellow;
-  static Color get buttonTextColor => Colors.white;
-  static Color get listTitleColor => Colors.black87;
-}
+final CustomTheme lightTheme = CustomTheme(
+  titleColor: Colors.black,
+  buttonBgColor: Colors.blue,
+  buttonTextColor: Colors.white,
+  listTitleColor: Colors.black87,
+);
+
+final CustomTheme darkTheme = CustomTheme(
+  titleColor: Colors.white,
+  buttonBgColor: Colors.blue,
+  buttonTextColor: Colors.white,
+  listTitleColor: Colors.black87,
+);
+final CustomTheme greenTheme = CustomTheme(
+  titleColor: Colors.white,
+  buttonBgColor: Colors.green,
+  buttonTextColor: Colors.white,
+  listTitleColor: Colors.black87,
+);
+final CustomTheme tealTheme = CustomTheme(
+  titleColor: Colors.white,
+  buttonBgColor: Colors.teal,
+  buttonTextColor: Colors.white,
+  listTitleColor: Colors.black87,
+);
+
+final CustomTheme redTheme = CustomTheme(
+  titleColor: Colors.white,
+  buttonBgColor: Colors.red,
+  buttonTextColor: Colors.white,
+  listTitleColor: Colors.black87,
+);
+
+
+
+

@@ -71,7 +71,7 @@ class MyDrawer extends StatelessWidget {
         children: [
           ListTileMoreCustomizable(
             dense: true,
-            leading: const Icon(Icons.color_lens),
+            leading: const Icon(Icons.color_lens,),
             title: Text(
               S.of(context).title_lens,
               style: const TextStyle(color: Colors.grey),
